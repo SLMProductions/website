@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/1fa8f829a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/vyy1xda.css">
+    <link rel="shortcut icon" type="image/png" href="./assets/logo.jpg">
+    <title>SLM Productions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Protipo', sans-serif;
+        }
+        .section-1-wrapper {
+            position: relative;
+        }
+        .showcase {
+            position: absolute;
+            left: 0;
+            right: 0;
+            min-height: 100vh;
+            padding: 100px;
+            display: flex;
+            display: -ms-flexbox;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #111;
+            color: #fff;
+            z-index: -2;
+        }
+        .showcase header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            z-index: 1000;
+            display: flex;
+            display: -ms-flexbox;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .showcase .logo {
+            margin: 0;
+            width: 75px;
+            height: 75px;
+            background-image: url('./assets/logo.jpg');
+            background-size: contain;
+            text-indent: -9999px;
+        }
+        .desktop-navigation ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .desktop-navigation .nav-item {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .nav-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .nav-item a:hover, .nav-item a.active {
+            color: #ffffff88
+        }
+        .mobile-navigation-container {
+            display: none;
+        }
+        /* .mobile-navigation-container .toggle {
+            position: relative;
+            height: 60px;
+            width: 60px;
+            background-image: url('https://i.ibb.co/HrfVRcx/menu.png');
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: center;
+            cursor: pointer;
+            filter: invert(1);
+        }
+        .mobile-navigation-container .toggle.active {
+            background-image: url('https://i.ibb.co/rt3HybH/close.png');
+            background-size: 25px;
+            filter: none;
+        } */
+        .showcase video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .8;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #444;
+            mix-blend-mode: overlay;
+        }
+        .text {
+            position: relative;
+            z-index: 10;
+        }
+        .text h2 {
+            font-size: 5rem;
+            margin-bottom: 0;
+        }
+        .text h3 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .text p {
+            font-size: 1.1rem;
+            margin: 20px 0;
+            max-width: 700px;
+        }
+        .text a {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background-color: #fff;
+            padding: 10px 30px;
+            text-decoration: none;
+            color: #111;
+            margin-top: 10px;
+            text-transform: uppercase;
+            transition: .3s;
+        }
+        .text a:hover {
+            background-color: #ffffff88;
+        }
+        .social {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            margin: 0;
+            z-index: 10;
+            display: flex;
+            display: -ms-flexbox;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+        }
+        .social div {
+            flex: 75%;
+        }
+        .social div li {
+            display: inline-block;
+        }
+        .social div li a {
+            display: inline-block;
+            margin-right: 20px;
+            color: #fff;
+            font-size: 32px;
+            transform: scale(0.5);
+            text-decoration: none;
+            transition: .3s;
+        }
+        .social div li a img {
+            filter: invert(1);
+            width: 51px;
+            vertical-align: -15px;
+        }
+        .social div li a:hover {
+            opacity: .5;
+        }
+        .compact-mlist-container {
+            flex: 25%;
+            text-align: center;
+        }
+        .compact-mlist-container .mlist-form input[type="email"] {
+            border: solid 1px #fff;
+            padding: .5rem;
+            margin-left: 0;
+            background-color: transparent;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .compact-mlist-container .mlist-form input[type="email"]:focus {
+            outline: none;
+        }
+        .compact-mlist-container .mlist-form input[type="email"]::placeholder {
+            color: #fff;
+        }
+        .compact-mlist-submit {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            border: none;
+            background-color: #fff;
+            padding: 8px;
+            margin: 0;
+            vertical-align: -1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #111;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .compact-mlist-submit:hover {
+            background-color: #ffffff88;
+        }
+        .modal {
+            position: fixed;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #11111188;
+            color: #fff;
+            display: none;
+            z-index: 1001;
+        }
+        .modal-content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+            max-width: 1340px;
+            display: none;
+        }
+        .close-container {
+            text-align: right;
+        }
+        .close {
+            font-size: 2rem;
+            display: inline-block;
+            height: 19px;
+            width: 19px;
+            cursor: pointer;
+        }
+        .mlist-wrapper {
+            padding: 1.5rem;
+            background-color: #000;
+            width: 100%;
+        }
+        .mlist-header {
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .mlist-iframe {
+            height: 252px;
+        }
+        /* .mlist-field input::-webkit-input-placeholder {
+            opacity: 0;
+            transition: inherit;
+            color: #fff;
+        }
+        input:focus::-webkit-input-placeholder {
+            opacity: 1;
+        }
+        .mlist-field input:placeholder-shown + .floating-label {
+            position: absolute;
+            left: 1.15rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+            transition: text-transform .3s, font-size .3s .3s, top .3s .3s, left .3s .3s;
+        }
+        input:not(:placeholder-shown) + .floating-label {
+            text-transform: uppercase;
+            font-size: .7rem;
+            top: 0rem !important;
+            left: .75rem !important;
+            font-weight: 700;
+        }
+        input:focus + .floating-label {
+            text-transform: uppercase;
+            font-size: .7rem;
+            top: 1.15rem !important;
+            left: .75rem !important;
+            position: absolute;
+            color: #000;
+        } */
+        @media screen and (max-width: 1158px) {
+            .close-container {
+                position: absolute;
+                right: .5rem;
+            }
+            .mlist-iframe {
+                height: 433px;
+            }
+        }
+        @media screen and (max-width: 992px) {
+            .compact-mlist-container {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .showcase, .showcase header {
+                padding: 40px;
+            }
+            .text h2 {
+                font-size: 3rem;
+                margin-top: 2em;
+            }
+            .text h3 {
+                font-size: 1.75rem;
+                margin-top: .5rem;
+            }
+            .text p {
+                font-size: 1rem;
+                margin: .25rem 0 0 0;
+            }
+            .text a {
+                font-size: 1rem;
+            }
+            .social {
+                padding-bottom: 0;
+                text-align: center;
+            }
+            .social div {
+                flex: 100%;
+            }
+            .mlist-header {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section-1-wrapper">
+        <section class="showcase">
+            <header>
+                <h2 class="logo">SLM Productions</h2>
+                <nav class="desktop-navigation">
+                    <ul>
+                        <li class="nav-item"><a href="javascript:" class="active">Home</a></li>
+                        <li class="nav-item"><a href="portfolio.html">Portfolio</a></li>
+                        <li class="nav-item"><a href="javascript:">Blog</a></li>
+                        <li class="nav-item signup"><a href="#mailing-list">Sign Up</a></li>
+                        <li class="nav-item"><a href="javascript:">Contact</a></li>
+                        <!-- li class="mobile-navigation-container"><div class="toggle"></div></li -->
+                    </ul>
+                </nav>
+            </header>
+            <video src="https://w3schools.com/howto/rain.mp4" muted loop autoplay></video>
+            <div class="overlay"></div>
+            <div class="text">
+                <h2>Websites for everyone</h2>
+                <h3>who want them</h3>
+                <p>Hi! We are SLM Productions. We create websites for people. No matter if you want a blog, website, online store, web app, etc., we can build it.</p>
+                <a href="portfolio.html">See our portfolio</a>
+            </div>
+            <ul class="social">
+                <div>
+                    <li>
+                        <a href="https://youtube.com/slmproductionsdesign" target="_blank" class="fab fa-youtube"></a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/slmproductionsdesign" target="_blank" class="fab fa-instagram"></a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/slmproductionsdesign" target="_blank" class="fab fa-facebook-f"></a>
+                    </li>
+                    <li>
+                        <a href="https://myspace.com/slmproductionsdesign" target="_blank" style="margin-right: 0;">
+                            <img src="https://cloud.githubusercontent.com/assets/2050490/11894740/d169db64-a53e-11e5-8164-42fbcab0b3ba.png" alt="MySpace">
+                        </a>
+                    </li>
+                </div>
+                <li class="compact-mlist-container">
+                    <form class="mlist-form" name="mlist-form" method="post">
+                        <input type="email" name="mlist-email" placeholder="Email..." required>
+                        <input type="submit" class="compact-mlist-submit" value="SUBMIT">
+                    </form>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <!-- div class="mobile-navigation">
+        <nav>
+            <ul>
+                <li><a href="javascript:">Home</a></li>
+                <li><a href="javascript:">Portfolio</a></li>
+                <li><a href="javascript:">Blog</a></li>
+                <li><a href="javascript:">Sign Up</a></li>
+                <li><a href="javascript:">Contact</a></li>
+            </ul>
+        </nav>
+    </div -->
+    <div id="mailing-list" class="modal">
+        <div class="modal-content">
+            <div class="close-container">
+                <div class="close">
+                    &times;
+                </div>
+            </div>
+            <div class="mlist-wrapper">
+                <div class="mlist-header">
+                    Subscribe to our mailing list!
+                </div>
+                <div class="mlist-form-wrapper">
+                    <iframe src="./mailing-list.html" frameborder="0" width="100%" class="mlist-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.signup').click(function(e){
+                event.preventDefault();
+                $('#mailing-list').show();
+                setTimeout(function(){$('.modal-content').fadeIn(300)}, 300)
+            })
+            $('.modal .close').click(function(){
+                $('.modal-content').fadeOut(300)
+                setTimeout(function(){$('.modal').hide()}, 300)
+            })
+            var modal = document.getElementsByClassName("modal")[0];
+            $(window).click(function(){
+                if (event.target == modal) {
+                    $('.modal-content').fadeOut(300)
+                    setTimeout(function(){$('.modal').hide()}, 300)
+                }
+            })
+            /* function validateEmail(){
+                /* var email = document.forms["mlist-form"]["mlist-email"].value;
+                if(email == "") {
+                    $('.mlist-email-field .error').show();
+                    $('.mlist-email-field .error').html('This field is required.');
+                    return false;
+                }
+                $('.mlist-email-field .error').show();
+                $('.mlist-email-field .error').html('Please enter a valid email address.');
+                return false;
+                var email = document.forms["mlist-form"]["mlist-email"].value;
+                if (email == "") {
+                    document.getElementById("error").innerHTML = "This field is required."
+                    document.getElementById("error").style.display = "block";
+                    return false;
+                }
+                document.getElementById("error").innerHTML = "Please enter a valid email address."
+                document.getElementById("error").style.display = "inline-block";
+                console.log = "invalid"
+                return false;
+            } */
+        })
+    </script>
+</body>
+</html>
