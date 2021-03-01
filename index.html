@@ -386,6 +386,8 @@
                     <form class="mlist-form" name="mlist-form" method="post">
                         <input type="email" name="mlist-email" spellcheck="false" placeholder="Email..." required>
                         <input type="submit" class="compact-mlist-submit" value="SUBMIT">
+                        <input name="uri" type="hidden" value="SlmProductions">
+                        <input name="loc" type="hidden" value="en_US">
                     </form>
                 </li>
             </ul>
@@ -436,6 +438,11 @@
                     $('.modal-content').fadeOut(300)
                     setTimeout(function(){$('.modal').hide()}, 300)
                 }
+            })
+            $('.mlist-submit').submit(function(){
+                $('.mlist-submit').attr('action','https://feedburner.google.com/fb/a/mailverify');
+                window.open("https://feedburner.google.com/fb/a/mailverify?uri=SlmProductions", "popupwindow", "scrollbars=yes,width=550,height=520");
+                return true;
             })
             /* function validateEmail(){
                 /* var email = document.forms["mlist-form"]["mlist-email"].value;
