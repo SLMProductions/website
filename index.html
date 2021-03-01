@@ -383,7 +383,7 @@
                     </li>
                 </div>
                 <li class="compact-mlist-container">
-                    <form class="mlist-form" name="mlist-form" method="post">
+                    <form class="mlist-form" name="mlist-form" method="post" onsubmit="processForm()">
                         <input type="email" name="mlist-email" spellcheck="false" placeholder="Email..." required>
                         <input type="submit" class="compact-mlist-submit" value="SUBMIT">
                         <input name="uri" type="hidden" value="SlmProductions">
@@ -439,7 +439,7 @@
                     setTimeout(function(){$('.modal').hide()}, 300)
                 }
             })
-            $('.mlist-submit').submit(function(){
+            function processForm() {
                 $('.mlist-submit').attr('action','https://feedburner.google.com/fb/a/mailverify');
                 window.open("https://feedburner.google.com/fb/a/mailverify?uri=SlmProductions", "popupwindow", "scrollbars=yes,width=550,height=520");
                 return false;
