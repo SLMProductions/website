@@ -65,6 +65,28 @@
             display: inline-block;
             margin-left: 1rem;
         }
+        .dropdown-container {
+            position: relative;
+            overflow: visible;
+        }
+        .dropdown-content {
+            /* display: none;*/
+            width: 100%;
+            max-width: 100px;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #fff;
+            padding: .5rem 0;
+        }
+        .dropdown-link:hover + .dropdown-content {
+            display: inline-block;
+        }
+        .dropdown-content a {
+            color: #000;
+            width: 100%;
+            display: block;
+        }
         .nav-item a {
             color: #fff;
             text-decoration: none;
@@ -304,7 +326,7 @@
             }
         }
         @media screen and (max-width: 992px) {
-            .compact-mlist-container, .legacy {
+            .compact-mlist-container {
                 display: none;
             }
         }
@@ -349,7 +371,11 @@
                     <ul>
                         <li class="nav-item"><a href="javascript:" class="active">Home</a></li>
                         <li class="nav-item"><a href="portfolio.html">Portfolio</a></li>
-                        <li class="nav-item"><a href="javascript:">Blog</a></li>
+                        <li class="nav-item dropdown-container"><a href="./blog" class="dropdown-link">Blog</a>
+                            <div class="dropdown-content">
+                                <a href="//slmproductions.blogspot.com">Legacy website</a>
+                            </div>
+                        </li>
                         <li class="nav-item signup"><a href="#mailing-list">Sign Up</a></li>
                         <li class="nav-item"><a href="javascript:">Contact</a></li>
                         <!-- li class="mobile-navigation-container"><div class="toggle"></div></li -->
