@@ -423,6 +423,16 @@
     </div>
     <script>
         $(document).ready(function(){
+            $('.compact-mlist-container form').submit(function(){
+                $.ajax({
+                    url: "https://feedburner.google.com/fb/a/mailverify",
+                    method: "POST",
+                    dataType: "json",
+                    success: function(){
+                        window.open("https://feedburner.google.com/fb/a/mailverify?uri=SlmProductions", "popupwindow", "scrollbars=yes,width=550,height=520"); return true
+                    }
+                })
+            })
             $('.signup').click(function(e){
                 event.preventDefault();
                 $('#mailing-list').show();
