@@ -32,11 +32,26 @@
         position: relative;
         padding: .5rem;
     }
+    .floating-container {
+        position: relative;
+    }
+    .floating-label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        color: #fff;
+        transition: .3s;
+    }
+    .floating-container>.mlist-field input:focus~.floating-label, .floating-container>.mlist-field input:not(:placeholder-shown)~label {
+        font-size: .8rem;
+        height: auto;
+    }
     .mlist-field input, .mlist-field select {
         width: 100%;
         height: 36px;
         padding: .5rem;
-        font-size: 1rem;
+        font-size: .85rem;
         font-family: inherit;
         color: #fff;
         background-color: transparent;
@@ -44,7 +59,7 @@
         margin: 0;
     }
     .mlist-field input::placeholder {
-        color: #fff;
+        color: transparent;
     }
     .mlist-field select {
         -webkit-appearance: none;
@@ -146,7 +161,10 @@
             <div class="row">
                 <div class="col-6">
                     <div class="mlist-field mlist-email-field">
-                        <input type="email" name="mlist-email" class="mlist-email" id="mlist-email" placeholder="Email..." required>
+                        <div class="floating-container">
+                            <input type="email" name="mlist-email" class="mlist-email" id="mlist-email" placeholder="Email..." required>
+                            <label for="mlist-email" class="floating-label">Email</label>
+                        </div>
                         <!-- label for="mlist-email" class="floating-label">
                             Email
                         </label -->
